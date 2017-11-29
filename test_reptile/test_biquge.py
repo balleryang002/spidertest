@@ -38,9 +38,9 @@ def getdownload(name,url):
     with open(r_path,"a",encoding='utf-8') as f:
         f.writelines(f_texts)
 
-# def getreptile(max_worker=4):
-#     with futures.ProcessPoolExecutor(max_workers=max_worker)as executor:
-#         for each_item in executor.map(getdownload,urls):
+def getreptile(max_worker=4):
+    with futures.ProcessPoolExecutor(max_workers=max_worker)as executor:
+        executor.map(getdownload,f_name,f_url)
 
 
 if __name__=="__main__":
@@ -48,11 +48,9 @@ if __name__=="__main__":
     f_url=urls[16:]
     f_name=names[16:]
 
+    getreptile()
 
-    print("================")
-    m=zip(f_name,f_url)
-    for name,url in m :
-        getdownload(name,url)
+
 
 
 
